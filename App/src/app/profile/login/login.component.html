@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <div class="card-text mt-4">
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+                            <div class="form-floating mb-4">
+                                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email" 
+                                [ngClass]="form.controls.email.errors?'is-invalid':''">
+                                <label for="email">Email</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.email.errors | json}}
+                                </div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password"
+                                [ngClass]="form.controls.password.errors?'is-invalid':''">
+                                <label for="password">Password</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.password.errors | json}}
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-outline-primary col-12">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,7 +7,7 @@ export interface SignupRequest {
     email: string,
     password: string,
     repeatPassword: string,
-    username: string
+    name: string
 }
 
 export interface LoginResponse {

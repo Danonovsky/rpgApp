@@ -9,7 +9,7 @@ import { LoginRequest, SignupRequest } from './profile.models';
 export class ProfileService {
 
   get url() {
-    return environment.api + "profile/"
+    return `${environment.api}auth/`;
   }
   constructor(
     private http: HttpClient
