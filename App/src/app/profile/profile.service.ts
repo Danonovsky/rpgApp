@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { LoginRequest, SignupRequest } from './profile.models';
+import { LoginRequest, LoginResponse, SignupRequest } from './profile.models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,15 @@ export class ProfileService {
     private http: HttpClient
   ) { }
 
-  login(request: LoginRequest) {
-    return this.http.post(this.url+"login",request);
+  login(request: LoginRequest): Observable<LoginResponse> {
+    return this.http.post(this.url+"login",request) as Observable<LoginResponse>;
   }
 
   signup(request: SignupRequest) {
     return this.http.post(this.url+"signup",request);
+  }
+
+  logOut() {
+    localStorage.removeItem("jwt");
   }
 }

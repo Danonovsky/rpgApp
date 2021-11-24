@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from 'src/app/profile/profile.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private profile: ProfileService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  isLoggedIn() {
+    console.log(localStorage.getItem("jwt") != null);
+    return localStorage.getItem("jwt") != null;
+  }
+
+  logout() {
+    this.profile.logOut();
   }
 
 }

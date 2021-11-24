@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginRequest } from '../profile.models';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  request: LoginRequest = {
+    email: '',
+    password: ''
+  };
 
   constructor(
+    private profileService: ProfileService,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +32,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if(!this.form.valid) {
-      
+    if(this.form.valid) {
+      console.log('xD');
+      this.request.email = this.form.value['email'];
+      this.request.password = this.form.value['password'];
+      this.profileService.login(this.request).subscribe(_ => {
+        const token = _.token;
+        localStorage.setItem("jwt", token);
+        this.toastrService.success('Login attempt successed.');
+        this.router.navigate(["/"]);
+      }, _ => {
+        this.toastrService.error('Login attempt failed.');
+      });
     }
   }
 

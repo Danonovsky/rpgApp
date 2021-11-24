@@ -29,7 +29,8 @@ export function tokenGetter() {
     }),
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:5000","localhost:5001"]
       }
     }),
     ProfileModule,
