@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileModule } from './profile/profile.module';
 import { SharedModule } from './shared/shared.module';
+import { CampaignModule } from './campaign/campaign.module';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -34,7 +35,8 @@ export function tokenGetter() {
       }
     }),
     ProfileModule,
-    SharedModule
+    SharedModule,
+    CampaignModule
   ],
   providers: [],
   bootstrap: [AppComponent]
