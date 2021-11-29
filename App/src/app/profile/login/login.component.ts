@@ -33,11 +33,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if(this.form.valid) {
-      console.log('xD');
       this.request.email = this.form.value['email'];
       this.request.password = this.form.value['password'];
       this.profileService.login(this.request).subscribe(_ => {
-        const token = _.token;
+        const token = _.body!.token;
         localStorage.setItem("jwt", token);
         this.toastrService.success('Login attempt successed.');
         this.router.navigate(["/"]);
