@@ -1,1 +1,43 @@
-<p>list-public works!</p>
+<div class="container pt-4">
+    <h2>Public campaigns</h2>
+    <div class="row">
+        <div class="col-12 mt-4" *ngIf="isEmpty">
+            <div class="alert alert-primary">
+                <i class="bi bi-info-circle"></i> No public campaigns.
+            </div>
+        </div>
+
+        <div class="offset-3 col-6 mt-4">
+            <a class="btn btn-outline-primary col-12" routerLink="/campaign/add">
+                Add Campaign
+            </a>
+        </div>
+
+        <div class="col-12 mt-4" *ngFor="let item of list">
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="" alt="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <small class="text-muted">{{item.user.name}}</small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <div class="card-body">
+                            {{item.description}}
+                        </div>
+                    </div>
+                    <div class="col-12 px-4 text-end">
+                        <a class="btn btn-outline-info btn-lg" routerLink="view/{{item.id}}">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

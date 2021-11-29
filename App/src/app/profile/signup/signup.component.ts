@@ -36,9 +36,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
     if(!this.form.valid) {
-      console.log(this.form);
       this.toastrService.error('Invalid input', 'Error');
     } else {
       this.request = {

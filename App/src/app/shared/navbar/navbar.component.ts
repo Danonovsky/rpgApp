@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isLoggedIn() {
-    console.log(localStorage.getItem("jwt") != null);
     return localStorage.getItem("jwt") != null;
   }
 
