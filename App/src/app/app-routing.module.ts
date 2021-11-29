@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path: 'campaign',
+    loadChildren: () => import('./campaign/campaign.module').then(m => m.CampaignModule)
   }
 ];
 

@@ -13,3 +13,8 @@ export interface SignupRequest {
 export interface LoginResponse {
     token: string
 }
+
+export interface PublicUserResponse {
+    id: string,
+    name: string
+}
