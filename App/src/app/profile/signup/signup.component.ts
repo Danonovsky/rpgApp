@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
         this.toastrService.success('Signed up successfuly.');
         this.router.navigateByUrl('/profile/login');
       }, _ => {
-        this.toastrService.error('An error occured. Try again.');
+        this.toastrService.error(_.statusTe);
       });
     }
   }

@@ -16,7 +16,12 @@ export class NavbarComponent implements OnInit {
   }
 
   isLoggedIn() {
-    return localStorage.getItem("jwt") != null;
+    var result = localStorage.getItem("jwt");
+    if(result === null) {
+      this.profile.logOut();
+      return false;;
+    }
+    return true;
   }
 
   logout() {

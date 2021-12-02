@@ -49,7 +49,6 @@ export class AddComponent implements OnInit {
         isPublic: this.form.value['isPublic'],
         system: this.form.value['system']
       }
-      console.log(this.request);
       this.campaignService.add(this.request).subscribe(_ => {
         this.toastrService.success('Campaign added successfuly.');
         this.router.navigateByUrl('/campaign/details/'+_.body?.id);
