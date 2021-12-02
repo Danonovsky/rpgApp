@@ -4,11 +4,13 @@ import { ListPublicComponent } from './list-public/list-public.component';
 import { CampaignRoutingModule } from './campaign-routing.module';
 import { AddComponent } from './add/add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     ListPublicComponent,
-    AddComponent
+    AddComponent,
+    DetailsComponent
   ],
   imports: [
     CampaignRoutingModule,

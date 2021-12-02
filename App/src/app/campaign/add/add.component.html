@@ -7,8 +7,8 @@
                     <div class="card-text mt-4">
                         <form [formGroup]="form" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
                             <div class="form-floating mb-4">
-                                <input formControlName="name" type="text" class="form-control" id="name" placeholder="Name" 
-                                [ngClass]="form.controls.name.errors?'is-invalid':''">
+                                <input formControlName="name" type="text" class="form-control" id="name"
+                                    placeholder="Name" [ngClass]="form.controls.name.errors?'is-invalid':''">
                                 <label for="name">Name</label>
                                 <div class="invalid-feedback">
                                     {{form.controls.name.errors | json}}
@@ -16,20 +16,33 @@
                             </div>
 
                             <div class="form-floating mb-4">
-                                <textarea formControlName="description" type="text" class="form-control" id="description" placeholder="Description" 
-                                [ngClass]="form.controls.description.errors?'is-invalid':''"></textarea>
+                                <textarea formControlName="description" type="text" class="form-control"
+                                    id="description" placeholder="Description"
+                                    [ngClass]="form.controls.description.errors?'is-invalid':''"></textarea>
                                 <label for="description">Description</label>
                                 <div class="invalid-feedback">
                                     {{form.controls.description.errors | json}}
                                 </div>
                             </div>
 
+                            <div class="form-floating mb-4">
+                                <select formControlName="system" class="form-select" id="system"
+                                [ngClass]="form.controls.system.errors?'is-invalid':''">
+                                    <option *ngFor="let system of systems" value="{{system.value}}">{{system.name}}</option>
+                                </select>
+                                <label for="system">System</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.system.errors | json}}
+                                </div>
+                            </div>
+
                             <div class="form-check">
-                                <input class="form-check-input" formControlName="isPublic" type="checkbox"  id="isPublic">
+                                <input class="form-check-input" formControlName="isPublic" type="checkbox"
+                                    id="isPublic">
                                 <label class="form-check-label" for="isPublic">
-                                  Public
+                                    Public
                                 </label>
-                              </div>
+                            </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-outline-primary col-12">
                                     Add

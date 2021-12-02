@@ -8,6 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'campaign',
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     loadChildren: () => import('./campaign/campaign.module').then(m => m.CampaignModule)
   }
 ];
