@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CampaignResponse, SetImageUrlRequest } from '../campaign.models';
 import { CampaignService } from '../campaign.service';
+import { environment } from 'src/environments/environment';
+import { systems } from 'src/app/shared/systems';
 
 @Component({
   selector: 'app-details',
@@ -38,8 +40,16 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  get systemName() {
+    return systems.filter(_ => _.value == this.item?.system)[0].name;
+  }
+
   getUrl() {
-    return "http://localhost:5000/"+this.item!.imageUrl;
+    return environment.api+this.item!.imageUrl;
+  }
+
+  join() {
+    //
   }
 
   changeUrl(event: Event) {

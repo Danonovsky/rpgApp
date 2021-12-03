@@ -17,21 +17,19 @@
             <div class="card p-3">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="" alt="img-fluid">
+                        <img src="{{api}}{{item.imageUrl}}" alt="{{item.name}} picture" class="img-fluid">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{item.name}}</h5>
                             <small class="text-muted">{{item.user.name}}</small>
+                            <p>
+                                {{item.description}}
+                            </p>
                         </div>
                     </div>
                     <div class="col-12">
                         <hr>
-                    </div>
-                    <div class="col-12">
-                        <div class="card-body">
-                            {{item.description}}
-                        </div>
                     </div>
                     <div class="col-12 px-4 text-end">
                         <a class="btn btn-outline-info btn-lg" routerLink="/campaign/details/{{item.id}}">Details</a>
