@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit {
   id: string = '';
   item?: CampaignResponse;
   isOwner: boolean = false;
+  joined: boolean = false;
   request?: SetImageUrlRequest;
   imgVisible: boolean = true;
 
@@ -34,6 +35,7 @@ export class DetailsComponent implements OnInit {
       this.item = _.body!;
       this.item.imageUrl = this.item.imageUrl;
       this.isOwner = this.campaignService.isOwner(_.body!.user.id);
+      this.checkIfJoined();
       console.log(this.item);
     }, _ => {
       this.toastr.error(_.statusText);
@@ -47,9 +49,19 @@ export class DetailsComponent implements OnInit {
   getUrl() {
     return environment.api+this.item!.imageUrl;
   }
+  checkIfJoined() {
+    this.campaignService.findGuest().subscribe(_ => {
+      this.joined = _.body!.filter(x => x.id == this.id).length > 0;
+    });
+  }
 
   join() {
     //
+    this.campaignService.join(this.id).subscribe(_ => {
+      this.toastr.success('Joined game!');
+    }, _ => {
+      this.toastr.error('An error occured. Try again.');
+    })
   }
 
   changeUrl(event: Event) {

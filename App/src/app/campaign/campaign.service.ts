@@ -55,4 +55,8 @@ export class CampaignService {
   setUrl(id: string, request: FormData): Observable<HttpResponse<SetImageUrlResponse>> {
     return this.http.patch<SetImageUrlResponse>(this.url+id, request, { observe: 'response'});
   }
+
+  join(id: string): Observable<HttpResponse<boolean>> {
+    return this.http.get<boolean>(`${this.url}Join/${id}`, { observe: 'response'});
+  }
 }
