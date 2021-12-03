@@ -52,7 +52,7 @@ export class CampaignService {
     return this.http.delete<boolean>(this.url+id, { observe: 'response' });
   }
 
-  setUrl(request: SetImageUrlRequest): Observable<HttpResponse<SetImageUrlResponse>> {
-    return this.http.patch<SetImageUrlResponse>(this.url+"image", request, { observe: 'response'});
+  setUrl(id: string, request: FormData): Observable<HttpResponse<SetImageUrlResponse>> {
+    return this.http.patch<SetImageUrlResponse>(this.url+id, request, { observe: 'response'});
   }
 }

@@ -12,7 +12,8 @@ export interface CampaignResponse {
     name: string,
     description: string,
     isPublic: boolean,
-    system: string
+    system: string,
+    imageUrl: string,
     user: PublicUserResponse
 }
 
