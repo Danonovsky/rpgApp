@@ -15,3 +15,12 @@ export interface CampaignResponse {
     system: string
     user: PublicUserResponse
 }
+
+export interface SetImageUrlRequest {
+    campaignId: string,
+    file: File
+}
+
+export interface SetImageUrlResponse {
+    url: string
+}

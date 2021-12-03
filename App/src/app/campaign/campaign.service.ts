@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CampaignRequest, CampaignResponse } from './campaign.models';
+import { CampaignRequest, CampaignResponse, SetImageUrlRequest, SetImageUrlResponse } from './campaign.models';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +50,9 @@ export class CampaignService {
 
   delete(id: string): Observable<HttpResponse<boolean>> {
     return this.http.delete<boolean>(this.url+id, { observe: 'response' });
+  }
+
+  setUrl(request: SetImageUrlRequest): Observable<HttpResponse<SetImageUrlResponse>> {
+    return this.http.patch<SetImageUrlResponse>(this.url+"image", request, { observe: 'response'});
   }
 }

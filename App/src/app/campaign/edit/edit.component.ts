@@ -29,26 +29,32 @@ export class EditComponent implements OnInit {
     private router: Router
   ) { }
 
-  loadItem() {
+  refreshItem() {
     this.campaignService.get(this.id!).subscribe(_ => {
       this.item = _.body!;
-      this.router.navigate(["/campaigns"]);
+    }, _ => {
+      this.router.navigate(["/campaign"]);
     });
   }
 
   ngOnInit(): void {
     if(this.route.snapshot.paramMap.get("id")) {
       this.id = this.route.snapshot.paramMap.get("id")!;
-      this.loadItem();
-      this.form = this.formBuilder.group({
-        name: [this.request.name, [Validators.required, Validators.minLength(5)]],
-        description: [this.request.description, [Validators.required, Validators.maxLength(100)]],
-        isPublic: [this.request.isPublic],
-        system: [this.request.system, [Validators.required]]
+      this.campaignService.get(this.id!).subscribe(_ => {
+        this.item = _.body!;
+        this.form = this.formBuilder.group({
+          name: [this.item.name, [Validators.required, Validators.minLength(5)]],
+          description: [this.item.description, [Validators.required, Validators.maxLength(100)]],
+          isPublic: [this.item.isPublic],
+          system: [this.item.system, [Validators.required]]
+        });
+      }, _ => {
+        this.router.navigate(["/campaign"]);
       });
+      
     }
     else {
-      this.router.navigate(["/campaigns"]);
+      this.router.navigate(["/campaign"]);
     }
   }
 
@@ -64,7 +70,7 @@ export class EditComponent implements OnInit {
       }
       this.campaignService.edit(this.request, this.id!).subscribe(_ => {
         this.toastrService.success('Campaign updated successfuly.');
-        this.loadItem();
+        this.refreshItem();
       }, _ => {
         this.toastrService.error('An error occured. Try again.');
       });
