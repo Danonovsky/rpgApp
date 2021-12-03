@@ -1,5 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CampaignRequest, CampaignResponse } from './campaign.models';
@@ -13,8 +14,15 @@ export class CampaignService {
     return `${environment.api}campaign/`;
   }
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService
   ) { }
+
+  isOwner(userId: string) {
+    var token = localStorage.getItem("jwt");
+    if(!token) return false;
+    return this.jwtHelper.decodeToken(token)['id'] === userId;
+  }
 
   findPublic(): Observable<HttpResponse<CampaignResponse[]>> {
     return this.http.get<CampaignResponse[]>(this.url+"public", { observe: 'response' });
@@ -36,8 +44,8 @@ export class CampaignService {
     return this.http.post<CampaignResponse>(this.url, request, { observe: 'response' });
   }
 
-  edit(request: CampaignRequest): Observable<HttpResponse<CampaignResponse>> {
-    return this.http.put<CampaignResponse>(this.url, request, { observe: 'response' });
+  edit(request: CampaignRequest, id: string): Observable<HttpResponse<CampaignResponse>> {
+    return this.http.put<CampaignResponse>(this.url+id, request, { observe: 'response' });
   }
 
   delete(id: string): Observable<HttpResponse<boolean>> {

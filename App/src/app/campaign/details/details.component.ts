@@ -10,7 +10,9 @@ import { CampaignService } from '../campaign.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  item?: CampaignResponse
+  id: string = '';
+  item?: CampaignResponse;
+  isOwner: boolean = false;
 
   constructor(
     private campaignService: CampaignService,
@@ -20,14 +22,13 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get("id");
-    if(!id) {
+    this.id = this.route.snapshot.paramMap.get("id")!;
+    if(!this.id) {
       this.router.navigate(["/campaigns"]);
     }
-    console.log(id);
-    this.campaignService.get(id!).subscribe(_ => {
+    this.campaignService.get(this.id!).subscribe(_ => {
       this.item = _.body!;
-      console.log(this.item);
+      this.isOwner = this.campaignService.isOwner(_.body!.user.id);
     }, _ => {
       this.toastr.error(_.statusText);
     });
