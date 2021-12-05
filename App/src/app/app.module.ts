@@ -13,6 +13,7 @@ import { CampaignModule } from './campaign/campaign.module';
 import { AuthGuard } from './shared/guards/auth-graud.service';
 import { GameModule } from './game/game.module';
 import { FormsModule } from '@angular/forms';
+import { ManagementModule } from './management/management.module';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -41,7 +42,8 @@ export function tokenGetter() {
     ProfileModule,
     SharedModule,
     CampaignModule,
-    GameModule
+    GameModule,
+    ManagementModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
