@@ -14,7 +14,15 @@ export class NavbarComponent implements OnInit {
     private jwtHelper: JwtHelperService
   ) { }
 
+  userName: string = '';
+  token: string = '';
+
   ngOnInit(): void {
+    const t = localStorage.getItem("jwt");
+    if(t) {
+      this.token = t;
+      this.userName = this.jwtHelper.decodeToken(this.token)["name"];
+    }
   }
 
   isLoggedIn() {

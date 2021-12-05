@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ProfileModule } from './profile/profile.module';
 import { SharedModule } from './shared/shared.module';
 import { CampaignModule } from './campaign/campaign.module';
+import { AuthGuard } from './shared/guards/auth-graud.service';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -38,7 +39,7 @@ export function tokenGetter() {
     SharedModule,
     CampaignModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
