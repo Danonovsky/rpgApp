@@ -1,33 +1,58 @@
-<div class="container">
-    <div class="row">
-        <div class="offset-4 col-1">
-            <div class="form-floating mb-4">
-                <input class="form-control" [(ngModel)]="amount" type="number" id="amount" placeholder="Amount" min="1"> 
-                <label for="amount">Amount</label>
+<div class="container-fluid">
+    <div class="row vh-90">
+        <div class="col-3">
+            Left section
+        </div>
+        <div class="col-6">
+            Middle section
+            <div class="row h-25">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-floating mb-4">
+                                <input class="form-control" [(ngModel)]="amount" type="number" id="amount" placeholder="Amount" min="1"> 
+                                <label for="amount">Amount</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-floating mb-4">
+                                <input class="form-control" [(ngModel)]="dice" type="number" id="dice" placeholder="dice" min="1"> 
+                                <label for="dice">Dice</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-floating mb-4">
+                                <input class="form-control" [(ngModel)]="static" type="number" id="static" placeholder="static"> 
+                                <label for="static">Static</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-floating mb-4">
+                                <input class="form-control" [(ngModel)]="multiplier" type="number" id="multiplier" placeholder="multiplier"> 
+                                <label for="multiplier">Multiplier</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-3 col-6 text-center">
+                            <button class="btn btn-outline-primary" (click)="roll()">Roll</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row h-50">
+                <div class="col-12">
+                    Middle section
+                </div>
+            </div>
+            <div class="row h-25">
+                <div class="col-12 overflow-auto">
+                    Bottom section
+                </div>
             </div>
         </div>
-        <div class="col-1">
-            <div class="form-floating mb-4">
-                <input class="form-control" [(ngModel)]="dice" type="number" id="dice" placeholder="dice" min="1"> 
-                <label for="dice">Dice</label>
-            </div>
-        </div>
-        <div class="col-1">
-            <div class="form-floating mb-4">
-                <input class="form-control" [(ngModel)]="static" type="number" id="static" placeholder="static"> 
-                <label for="static">Static</label>
-            </div>
-        </div>
-        <div class="col-1">
-            <div class="form-floating mb-4">
-                <input class="form-control" [(ngModel)]="multiplier" type="number" id="multiplier" placeholder="multiplier"> 
-                <label for="multiplier">Multiplier</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="offset-3 col-6 text-center">
-            <button class="btn btn-outline-primary" (click)="roll()">Roll</button>
+        <div class="col-3">
+            Right section
         </div>
     </div>
 </div>

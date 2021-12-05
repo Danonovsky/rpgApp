@@ -17,8 +17,10 @@ export class PanelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.gameService.startConnection();
-    this.gameService.addSingleRollListener();
+    this.gameService.listenSingleRoll();
+    this.gameService.rollResult.subscribe(_ => {
+      console.log(_);
+    })
   }
 
   roll() {
