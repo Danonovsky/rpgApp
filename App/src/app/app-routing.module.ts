@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('./campaign/campaign.module').then(m => m.CampaignModule)
   },
   {
-    path: 'management',
+    path: 'management/:campaignId',
     runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     canActivate: [AuthGuard],
     loadChildren: () => import('./management/management.module').then(m => m.ManagementModule)
