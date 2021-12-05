@@ -1,1 +1,33 @@
-<p>panel works!</p>
+<div class="container">
+    <div class="row">
+        <div class="offset-4 col-1">
+            <div class="form-floating mb-4">
+                <input class="form-control" [(ngModel)]="amount" type="number" id="amount" placeholder="Amount" min="1"> 
+                <label for="amount">Amount</label>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-floating mb-4">
+                <input class="form-control" [(ngModel)]="dice" type="number" id="dice" placeholder="dice" min="1"> 
+                <label for="dice">Dice</label>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-floating mb-4">
+                <input class="form-control" [(ngModel)]="static" type="number" id="static" placeholder="static"> 
+                <label for="static">Static</label>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-floating mb-4">
+                <input class="form-control" [(ngModel)]="multiplier" type="number" id="multiplier" placeholder="multiplier"> 
+                <label for="multiplier">Multiplier</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-3 col-6 text-center">
+            <button class="btn btn-outline-primary" (click)="roll()">Roll</button>
+        </div>
+    </div>
+</div>

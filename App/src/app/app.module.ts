@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { CampaignModule } from './campaign/campaign.module';
 import { AuthGuard } from './shared/guards/auth-graud.service';
 import { GameModule } from './game/game.module';
+import { FormsModule } from '@angular/forms';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -26,6 +27,7 @@ export function tokenGetter() {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       closeButton: true
