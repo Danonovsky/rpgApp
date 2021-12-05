@@ -12,6 +12,12 @@ const routes: Routes = [
     runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     canActivate: [AuthGuard],
     loadChildren: () => import('./campaign/campaign.module').then(m => m.CampaignModule)
+  },
+  {
+    path: 'game',
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./game/game.module').then(_ => _.GameModule)
   }
 ];
 

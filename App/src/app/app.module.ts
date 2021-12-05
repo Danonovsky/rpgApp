@@ -11,6 +11,7 @@ import { ProfileModule } from './profile/profile.module';
 import { SharedModule } from './shared/shared.module';
 import { CampaignModule } from './campaign/campaign.module';
 import { AuthGuard } from './shared/guards/auth-graud.service';
+import { GameModule } from './game/game.module';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -37,7 +38,8 @@ export function tokenGetter() {
     }),
     ProfileModule,
     SharedModule,
-    CampaignModule
+    CampaignModule,
+    GameModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
