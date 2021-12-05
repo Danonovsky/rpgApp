@@ -32,4 +32,9 @@ export class AddComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.characteristics = [];
+    this.skills = [];
+  }
+
 }

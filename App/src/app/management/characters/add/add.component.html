@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
 <div class="row">
     <div class="col-12 text-center">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal" (click)="reset()">
             Add Character
         </button>
     </div>
@@ -39,7 +39,7 @@
                     <div class="col-2 p-3" *ngFor="let char of skills">
                         <div class="row">
                             <div class="col-12 tile text-center pt-4">
-                                <p class="h4">{{char.value}}</p>
+                                <p class="h4">{{char.value + char.advancement}}</p>
                                 <p class="text-muted"><small>{{char.name}}</small></p>
                             </div>
                         </div>
