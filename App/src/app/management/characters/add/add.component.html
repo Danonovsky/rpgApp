@@ -1,0 +1,56 @@
+<!-- Button trigger modal -->
+<div class="row">
+    <div class="col-12 text-center">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+            Add Character
+        </button>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Add Character</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-end">
+                        <button class="btn btn-outline-info" (click)="rollCharacter()">Roll All</button>
+                    </div>
+                </div>
+                <h4>Characteristics <button class="btn btn-outline-info btn-sm">Roll</button></h4>
+                <div class="row">
+                    <div class="col-2 p-3" *ngFor="let char of characteristics">
+                        <div class="row">
+                            <div class="col-12 tile text-center pt-4">
+                                <p class="h4">{{char.value}}</p>
+                                <p class="text-muted"><small>{{char.name}}</small></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <h4>Skills <button class="btn btn-outline-info btn-sm">Roll</button></h4>
+                <div class="row">
+                    <div class="col-2 p-3" *ngFor="let char of skills">
+                        <div class="row">
+                            <div class="col-12 tile text-center pt-4">
+                                <p class="h4">{{char.value}}</p>
+                                <p class="text-muted"><small>{{char.name}}</small></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success">Add</button>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

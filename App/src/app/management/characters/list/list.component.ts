@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeComponent } from '../../home/home.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -7,10 +7,17 @@ import { HomeComponent } from '../../home/home.component';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  campaignId: string = '';
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('campaignId');
+    if(id) {
+      this.campaignId = id;
+    }
   }
 
 }
