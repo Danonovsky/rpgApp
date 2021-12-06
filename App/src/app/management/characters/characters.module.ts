@@ -4,7 +4,7 @@ import { ListComponent } from './list/list.component';
 import { CharactersRoutingModule } from './characters-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddComponent } from './add/add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     CharactersRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CharactersModule { }

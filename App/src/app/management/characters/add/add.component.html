@@ -1,7 +1,8 @@
 <!-- Button trigger modal -->
 <div class="row">
     <div class="col-12 text-center">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal" (click)="reset()">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal"
+            (click)="reset()">
             Add Character
         </button>
     </div>
@@ -12,53 +13,76 @@
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addModalLabel">Add Character</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Add Character</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-floating mb-4">
+                                <input formControlName="firstName" type="text" class="form-control" id="firstName"
+                                    placeholder="First Name" [ngClass]="form.controls.firstName.errors?'is-invalid':''">
+                                <label for="firstName">First Name</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.firstName.errors | json}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating mb-4">
+                                <input formControlName="lastName" type="text" class="form-control" id="lastName"
+                                    placeholder="Last Name" [ngClass]="form.controls.lastName.errors?'is-invalid':''">
+                                <label for="lastName">Last Name</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.lastName.errors | json}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-floating mb-4">
-                        <select [(ngModel)]="race" class="form-select" id="race">
+                        <select formControlName="race" class="form-select" id="race">
                             <option *ngFor="let race of races" value="{{race}}">{{race}}</option>
                         </select>
                         <label for="race">Race</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-end">
-                        <button class="btn btn-outline-info" (click)="rollCharacter()">Roll All</button>
-                    </div>
-                </div>
-                <h4>Characteristics <button class="btn btn-outline-info btn-sm">Roll</button></h4>
-                <div class="row">
-                    <div class="col-2 p-3" *ngFor="let char of characteristics">
-                        <div class="row">
-                            <div class="col-12 tile text-center pt-4">
-                                <p class="h4">{{char.value}}</p>
-                                <p class="text-muted"><small>{{char.name}}</small></p>
-                            </div>
+                    <div class="row">
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-outline-info" (click)="rollCharacter()">Roll
+                                All</button>
                         </div>
-                        
                     </div>
-                </div>
-                <h4>Skills <button class="btn btn-outline-info btn-sm">Roll</button></h4>
-                <div class="row">
-                    <div class="col-2 p-3" *ngFor="let char of skills">
-                        <div class="row">
-                            <div class="col-12 tile text-center pt-4">
-                                <p class="h4">{{char.value + char.advancement}}</p>
-                                <p class="text-muted"><small>{{char.name}}</small></p>
+                    <h4>Characteristics <button class="btn btn-outline-info btn-sm">Roll</button></h4>
+                    <div class="row">
+                        <div class="col-2 p-3" *ngFor="let char of characteristics">
+                            <div class="row">
+                                <div class="col-12 tile text-center pt-4">
+                                    <p class="h4">{{char.value}}</p>
+                                    <p class="text-muted"><small>{{char.name}}</small></p>
+                                </div>
                             </div>
+
                         </div>
-                        
+                    </div>
+                    <h4>Skills <button class="btn btn-outline-info btn-sm">Roll</button></h4>
+                    <div class="row">
+                        <div class="col-2 p-3" *ngFor="let char of skills">
+                            <div class="row">
+                                <div class="col-12 tile text-center pt-4">
+                                    <p class="h4">{{char.value + char.advancement}}</p>
+                                    <p class="text-muted"><small>{{char.name}}</small></p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success">Add</button>
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-success">Add</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

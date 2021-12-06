@@ -7,7 +7,9 @@ export interface Character {
 }
 
 export interface Race {
-    name: string
+    name: string,
+    characteristics?: Characteristic[],
+    skills?: Skill[]
 }
 
 export interface Characteristic {
@@ -26,4 +28,9 @@ export interface CharacterRollRequest {
     systemName: string,
     race: string,
     attribute?: string
+}
+
+export interface AddCharacterRequest {
+    character: Character,
+    campaignId: string
 }
