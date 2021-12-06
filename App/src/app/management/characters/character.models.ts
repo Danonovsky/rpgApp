@@ -34,3 +34,9 @@ export interface AddCharacterRequest {
     character: Character,
     campaignId: string
 }
+
+export interface CharacterSimpleResponse {
+    id: string,
+    firstName: string,
+    lastName: string
+}
