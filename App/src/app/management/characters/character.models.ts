@@ -21,3 +21,9 @@ export interface Skill {
     value: number,
     advancement: number
 }
+
+export interface CharacterRollRequest {
+    systemName: string,
+    race: string,
+    attribute?: string
+}

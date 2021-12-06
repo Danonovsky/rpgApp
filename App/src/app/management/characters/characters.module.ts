@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { CharactersRoutingModule } from './characters-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddComponent } from './add/add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AddComponent } from './add/add.component';
   imports: [
     CommonModule,
     CharactersRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class CharactersModule { }
