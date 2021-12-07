@@ -1,7 +1,31 @@
 <app-m-navbar [campaignId]="campaignId"></app-m-navbar>
 <div class="container mt-4">
     <app-add [campaignId]="campaignId"></app-add>
-    <div class="row">
-        <div class="col-12">xDD</div>
+    <div class="row mt-4 text-center">
+        <h2>Characters List</h2>
     </div>
+    <div class="row">
+        <div class="col-3 p-4" *ngFor="let char of characters">
+            <div class="card">
+                <img class="img-fluid" src="https://localhost:5001/resources/images/noAvatar.jpg" alt="{{char.firstName}} {{char.lastName}}">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{char.firstName}} {{char.lastName}}
+                    </h5>
+                    <div class="row mt-4">
+                        <p class="col-6 mb-0">
+                            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailsModal"
+                                (click)="loadDetails(char.id)">
+                                Details
+                            </button>
+                        </p>
+                        <p class="col-6 mb-0 text-end">
+                            <button class="btn btn-outline-danger">Delete</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-details [character]="character"></app-details>
 </div>

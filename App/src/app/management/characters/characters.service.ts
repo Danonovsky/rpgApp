@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CampaignService } from 'src/app/campaign/campaign.service';
 import { environment } from 'src/environments/environment';
-import { AddCharacterRequest, Character, CharacterRollRequest, CharacterSimpleResponse } from './character.models';
+import { AddCharacterRequest, Character, CharacterResponse, CharacterRollRequest, CharacterSimpleResponse } from './character.models';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,9 @@ export class CharactersService {
 
   getAllCharacters(cammpaignId: string): Observable<HttpResponse<CharacterSimpleResponse[]>> {
     return this.http.get<CharacterSimpleResponse[]>(`${this.url}${cammpaignId}`, { observe: 'response' });
+  }
+
+  get(characterId: string): Observable<HttpResponse<CharacterResponse>> {
+    return this.http.get<CharacterResponse>(`${this.url}Get/${characterId}`, { observe: 'response' });
   }
 }

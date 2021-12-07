@@ -18,10 +18,18 @@ export interface Characteristic {
     advancement: number
 }
 
+export interface CharacteristicResponse extends Characteristic {
+    id: string
+}
+
 export interface Skill {
     name: string,
     value: number,
     advancement: number
+}
+
+export interface SkillResponse extends Skill {
+    id: string
 }
 
 export interface CharacterRollRequest {
@@ -39,4 +47,9 @@ export interface CharacterSimpleResponse {
     id: string,
     firstName: string,
     lastName: string
+}
+
+export interface CharacterResponse extends CharacterSimpleResponse {
+    skills: Skill[],
+    characteristics: Characteristic[]
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CharacterSimpleResponse } from '../character.models';
+import { CharacterResponse, CharacterSimpleResponse } from '../character.models';
 import { CharactersService } from '../characters.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { CharactersService } from '../characters.service';
 export class ListComponent implements OnInit {
   campaignId: string = '';
   characters: CharacterSimpleResponse[] = [];
+  character?: CharacterResponse;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,12 @@ export class ListComponent implements OnInit {
         console.log(this.characters);
       });
     }
+  }
+
+  loadDetails(id: string) {
+    this.characterService.get(id).subscribe(_ => {
+      this.character = _.body!;
+    });
   }
 
 }

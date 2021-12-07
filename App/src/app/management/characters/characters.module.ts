@@ -5,11 +5,13 @@ import { CharactersRoutingModule } from './characters-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddComponent } from './add/add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     ListComponent,
-    AddComponent
+    AddComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
