@@ -11,8 +11,12 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <p class="text-muted"><small>First Name</small></p>
+                    <p>{{character?.firstName}}</p>
+                    <p class="text-muted"><small>Last Name</small></p>
+                    <p>{{character?.lastName}}</p>
                 </div>
-                <h4>Characteristics <button class="btn btn-outline-info btn-sm">Roll</button></h4>
+                <h4>Characteristics</h4>
                 <div class="row">
                     <div class="col-2 p-3" *ngFor="let char of character?.characteristics">
                         <div class="row">
@@ -24,7 +28,7 @@
 
                     </div>
                 </div>
-                <h4>Skills <button class="btn btn-outline-info btn-sm">Roll</button></h4>
+                <h4>Skills</h4>
                 <div class="row">
                     <div class="col-2 p-3" *ngFor="let char of character?.skills">
                         <div class="row">
@@ -38,7 +42,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-success">Add</button>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
