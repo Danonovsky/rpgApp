@@ -52,4 +52,5 @@ export interface CharacterSimpleResponse {
 export interface CharacterResponse extends CharacterSimpleResponse {
     skills: Skill[],
     characteristics: Characteristic[]
+    race: string
 }
