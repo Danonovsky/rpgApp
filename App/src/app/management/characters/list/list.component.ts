@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CharacterResponse, CharacterSimpleResponse } from '../character.models';
 import { CharactersService } from '../characters.service';
 
@@ -15,7 +16,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private characterService: CharactersService
+    private characterService: CharactersService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +42,15 @@ export class ListComponent implements OnInit {
 
   refresh() {
     this.loadAll();
+  }
+
+  delete(id: string) {
+    this.characterService.delete(id).subscribe(_ => {
+      this.toastr.success('Character deleted');
+      this.refresh();
+    }, _ => {
+      this.toastr.error('An error occured');
+    });
   }
 
 }

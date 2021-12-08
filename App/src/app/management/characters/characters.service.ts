@@ -38,4 +38,8 @@ export class CharactersService {
   get(characterId: string): Observable<HttpResponse<CharacterResponse>> {
     return this.http.get<CharacterResponse>(`${this.url}Get/${characterId}`, { observe: 'response' });
   }
+
+  delete(characterId: string): Observable<HttpResponse<boolean>> {
+    return this.http.delete<boolean>(`${this.url}${characterId}`, { observe: 'response' });
+  }
 }
