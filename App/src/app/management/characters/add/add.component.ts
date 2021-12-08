@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CampaignService } from 'src/app/campaign/campaign.service';
@@ -12,6 +12,7 @@ import { CharactersService } from '../characters.service';
 })
 export class AddComponent implements OnInit {
   @Input() campaignId: string = '';
+  @Output() onAdd = new EventEmitter();
   system: string = '';
   races: string[] = [];
   characteristics: Characteristic[] = [];
@@ -72,6 +73,8 @@ export class AddComponent implements OnInit {
         campaignId: this.campaignId
       }).subscribe(_ => {
         this.toastr.success('Character added', 'Success');
+        this.onAdd.emit("added");
+        document.getElementById('addClose')?.click();
       }, _ => {
         this.toastr.error('An error occured.');
       });

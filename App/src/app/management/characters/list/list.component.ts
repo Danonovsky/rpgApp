@@ -22,17 +22,24 @@ export class ListComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('campaignId');
     if(id) {
       this.campaignId = id;
-      this.characterService.getAllCharacters(this.campaignId).subscribe(_ => {
-        this.characters = _.body!;
-        console.log(this.characters);
-      });
+      this.loadAll();
     }
+  }
+
+  loadAll() {
+    this.characterService.getAllCharacters(this.campaignId).subscribe(_ => {
+      this.characters = _.body!;
+    });
   }
 
   loadDetails(id: string) {
     this.characterService.get(id).subscribe(_ => {
       this.character = _.body!;
     });
+  }
+
+  refresh() {
+    this.loadAll();
   }
 
 }
