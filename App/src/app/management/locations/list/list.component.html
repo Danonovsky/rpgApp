@@ -1,31 +1,31 @@
 <app-m-navbar [campaignId]="campaignId"></app-m-navbar>
 <div class="container mt-4">
-    <app-add [campaignId]="campaignId" (onAdd)="refresh()"></app-add>
+    <!--app-add [campaignId]="campaignId" (onAdd)="refresh()"></!--app-add-->
     <div class="row mt-4 text-center">
-        <h2>Characters</h2>
+        <h2>Locations</h2>
     </div>
     <div class="row">
-        <div class="col-3 p-4" *ngFor="let char of characters">
+        <div class="col-3 p-4" *ngFor="let location of locations">
             <div class="card">
-                <img class="img-fluid" src="https://localhost:5001/resources/images/noAvatar.jpg" alt="{{char.firstName}} {{char.lastName}}">
+                <img class="img-fluid" src="https://localhost:5001/resources/images/noAvatar.jpg" alt="{{location.name}}">
                 <div class="card-body">
                     <h5 class="card-title">
-                        {{char.firstName}} {{char.lastName}}
+                        {{location.name}}
                     </h5>
                     <div class="row mt-4">
                         <p class="col-6 mb-0">
                             <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailsModal"
-                                (click)="loadDetails(char.id)">
+                                (click)="loadDetails(location.id)">
                                 Details
                             </button>
                         </p>
                         <p class="col-6 mb-0 text-end">
-                            <button class="btn btn-outline-danger" (click)="delete(char.id)">Delete</button>
+                            <button class="btn btn-outline-danger" (click)="delete(location.id)">Delete</button>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <app-details [character]="character"></app-details>
+    <!--app-details [character]="character"></!--app-details-->
 </div>
