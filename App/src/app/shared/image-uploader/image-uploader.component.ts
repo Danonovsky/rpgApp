@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { SetImageUrlResponse } from 'src/app/campaign/campaign.models';
 import { environment } from 'src/environments/environment';
@@ -11,12 +11,10 @@ import { environment } from 'src/environments/environment';
 })
 export class ImageUploaderComponent implements OnInit {
 
-  @Output() 
-  onUpload = new EventEmitter();
-  @Input() 
-  name: string = '';
-  @Input() 
-  id: string = '';
+  @Output() onUpload = new EventEmitter();
+  @Input() name: string = '';
+  @Input() id: string = '';
+  @ViewChild('myInput') fileInput?: ElementRef;
 
   constructor(
     private http: HttpClient,
@@ -34,6 +32,7 @@ export class ImageUploaderComponent implements OnInit {
         var formData = new FormData();
         formData.append('file',newFile, newFile.name);
         this.http.patch<SetImageUrlResponse>(`${environment.api}${this.name}/Img/${this.id}`, formData, { observe: 'response' }).subscribe(_ => {
+          this.fileInput!.nativeElement.value= '';
           if(_.body) {
             this.onUpload.emit(_.body.url);
             this.toastr.info('Saved changes.');
