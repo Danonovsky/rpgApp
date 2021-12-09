@@ -9,10 +9,14 @@ export class MNavbarComponent implements OnInit {
 
   constructor() { }
 
-  @Input()
-  campaignId: string = '';
+  @Input() page: string = '';
+  @Input() campaignId: string = '';
 
   ngOnInit(): void {
+  }
+
+  getActivity(name: string) {
+    return name == this.page ? 'active' : '';
   }
 
 }
