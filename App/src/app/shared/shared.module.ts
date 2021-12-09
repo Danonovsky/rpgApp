@@ -4,13 +4,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { MNavbarComponent } from './m-navbar/m-navbar.component';
 import { SystemPickerComponent } from './system-picker/system-picker.component';
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     MNavbarComponent,
-    SystemPickerComponent
+    SystemPickerComponent,
+    ImageUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { SystemPickerComponent } from './system-picker/system-picker.component';
   ],
   exports: [
     NavbarComponent,
-    MNavbarComponent
+    MNavbarComponent,
+    ImageUploaderComponent
   ]
 })
 export class SharedModule { }

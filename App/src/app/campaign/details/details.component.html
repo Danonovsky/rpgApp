@@ -9,8 +9,8 @@
         <h2>Campaign Details</h2>
         <div class="row">
             <div class="col-md-4">
-                <img [src]="getUrl()" alt="" class="img-fluid" *ngIf="imgVisible">
-                <input type="file" class="form-control" accept="image/*" (change)="changeUrl($event)" *ngIf="isOwner">
+                <img [src]="getUrl()" alt="" class="img-fluid">
+                <app-image-uploader *ngIf="isOwner" [name]="'campaign'" [id]="item.id" (onUpload)="onUpload($event)"></app-image-uploader>
             </div>
             <div class="col-md-8">
                 <p class="text-muted mb-0"><small>Name</small></p>

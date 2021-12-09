@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CampaignResponse, SetImageUrlRequest } from '../campaign.models';
+import { CampaignResponse } from '../campaign.models';
 import { CampaignService } from '../campaign.service';
 import { environment } from 'src/environments/environment';
 import { systems } from 'src/app/shared/systems';
@@ -16,8 +16,7 @@ export class DetailsComponent implements OnInit {
   item?: CampaignResponse;
   isOwner: boolean = false;
   joined: boolean = false;
-  request?: SetImageUrlRequest;
-  imgVisible: boolean = true;
+  path: string = '';
 
   constructor(
     private campaignService: CampaignService,
@@ -63,31 +62,7 @@ export class DetailsComponent implements OnInit {
     })
   }
 
-  changeUrl(event: Event) {
-    var files = (event.currentTarget as HTMLInputElement).files;
-    if(files && files?.length>0) {
-      var newFile = files.item(0);
-      if(newFile) {
-        this.request = {
-          campaignId: this.id,
-          file: newFile
-        };
-        var formData = new FormData();
-        formData.append('file',newFile, newFile.name);
-        this.campaignService.setUrl(this.id,formData).subscribe(_ => {
-          if(_.body) {
-            this.item!.imageUrl = _.body.url;
-            this.toastr.info('Saved changes.');
-            /*this.imgVisible = false;
-            setTimeout(() => {
-              this.imgVisible = true;
-            }, 100);*/
-            
-          }
-        }, _ => {
-          this.toastr.error(_.statusText);
-        })
-      }
-    }
+  onUpload(event: string) {
+    this.item!.imageUrl = event;
   }
 }

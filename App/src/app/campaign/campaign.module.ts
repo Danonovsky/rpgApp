@@ -6,6 +6,7 @@ import { AddComponent } from './add/add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditComponent } from './edit/edit.component';
     CampaignRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class CampaignModule { }
