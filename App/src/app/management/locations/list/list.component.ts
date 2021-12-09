@@ -12,6 +12,7 @@ import { LocationService } from '../locations.service';
 export class ListComponent implements OnInit {
   locations: LocationResponse[] = [];
   campaignId: string = '';
+  location?: LocationResponse;
 
   constructor(
     private locationService: LocationService,
@@ -36,6 +37,9 @@ export class ListComponent implements OnInit {
 
   loadDetails(id: string) {
     //
+    this.locationService.get(id).subscribe(_ => {
+      this.location = _.body!;
+    });
   }
 
   delete(id: string) {
