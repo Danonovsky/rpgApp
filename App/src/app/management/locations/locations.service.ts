@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { LocationResponse } from './locations.models';
+import { AddLocationRequest, LocationResponse } from './locations.models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LocationsService {
+export class LocationService {
 
   get url() {
-    return environment.api;
+    return `${environment.api}Location/`;
   }
   constructor(
     private http: HttpClient
@@ -21,5 +21,9 @@ export class LocationsService {
 
   getAll(campaignId: string) {
     return this.http.get<LocationResponse[]>(`${this.url}List/${campaignId}`, { observe: 'response' });
+  }
+
+  add(request: AddLocationRequest) {
+    return this.http.post<LocationResponse>(`${this.url}`, request, { observe: 'response' });
   }
 }

@@ -4,10 +4,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LocationsRoutingModule } from './locations-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    AddComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LocationResponse } from '../locations.models';
-import { LocationsService } from '../locations.service';
+import { LocationService } from '../locations.service';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   campaignId: string = '';
 
   constructor(
-    private locationsService: LocationsService,
+    private locationsService: LocationService,
     private route: ActivatedRoute
   ) { }
 
