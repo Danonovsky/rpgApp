@@ -27,7 +27,6 @@ export class CharactersService {
   }
 
   addCharacter(request: AddCharacterRequest): Observable<HttpResponse<boolean>> {
-    console.log(request);
     return this.http.post<boolean>(`${this.url}`, request, { observe: 'response' });
   }
 

@@ -36,7 +36,6 @@ export class DetailsComponent implements OnInit {
       this.item.imageUrl = this.item.imageUrl;
       this.isOwner = this.campaignService.isOwner(_.body!.user.id);
       this.checkIfJoined();
-      console.log(this.item);
     }, _ => {
       this.toastr.error(_.statusText);
     });

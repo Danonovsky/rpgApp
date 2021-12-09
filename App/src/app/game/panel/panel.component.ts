@@ -19,7 +19,7 @@ export class PanelComponent implements OnInit {
   ngOnInit(): void {
     this.gameService.listenSingleRoll();
     this.gameService.rollResult.subscribe(_ => {
-      console.log(_);
+      console.log(_);//display on chat later
     })
   }
 

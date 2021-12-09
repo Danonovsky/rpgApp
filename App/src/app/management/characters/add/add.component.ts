@@ -41,7 +41,6 @@ export class AddComponent implements OnInit {
   getRaces() {
     this.charactersService.getRaces(this.system).subscribe(_ => {
       this.races = _.body!;
-      console.log(this.races);
     });
   }
 

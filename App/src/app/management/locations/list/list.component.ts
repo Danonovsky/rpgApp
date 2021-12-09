@@ -31,7 +31,6 @@ export class ListComponent implements OnInit {
   refresh() {
     this.locationService.getAll(this.campaignId).subscribe(_ => {
       this.locations = _.body!;
-      console.log(this.locations);
     });
   }
 
