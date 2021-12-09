@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LocationResponse } from '../locations.models';
 import { LocationService } from '../locations.service';
 
@@ -13,8 +14,9 @@ export class ListComponent implements OnInit {
   campaignId: string = '';
 
   constructor(
-    private locationsService: LocationService,
-    private route: ActivatedRoute
+    private locationService: LocationService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +28,7 @@ export class ListComponent implements OnInit {
   }
 
   refresh() {
-    this.locationsService.getAll(this.campaignId).subscribe(_ => {
+    this.locationService.getAll(this.campaignId).subscribe(_ => {
       this.locations = _.body!;
       console.log(this.locations);
     });
@@ -37,7 +39,13 @@ export class ListComponent implements OnInit {
   }
 
   delete(id: string) {
-    //
+    this.locationService.delete(id).subscribe(_ => {
+      //
+      this.toastr.info('Location deleted.');
+      this.refresh();
+    }, _ => {
+      this.toastr.error('An error occured');
+    })
   }
 
 }
