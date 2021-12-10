@@ -4,12 +4,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotesRoutingModule } from './notes-routing.module';
 import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
 
 
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    AddComponent
   ],
   imports: [
     CommonModule,

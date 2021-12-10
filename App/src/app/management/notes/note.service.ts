@@ -22,7 +22,7 @@ export class NoteService {
   }
 
   getAll(campaignId: string) {
-    return this.http.get<NoteResponse[]>(`${this.url}${campaignId}`, { observe: 'response' });
+    return this.http.get<NoteResponse[]>(`${this.url}List/${campaignId}`, { observe: 'response' });
   }
 
   add(request: AddNoteRequest) {
