@@ -34,9 +34,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-floating mb-4">
-                                <textarea formControlName="description" type="text" class="form-control" id="description"
-                                    placeholder="Description" [ngClass]="form.controls.description.errors?'is-invalid':''"></textarea>
-                                <label for="description">Description</label>
+                                <textarea formControlName="description" type="text" class="form-control" id="content"
+                                    placeholder="Content" [ngClass]="form.controls.description.errors?'is-invalid':''"></textarea>
+                                <label for="content">Content</label>
                                 <div class="invalid-feedback">
                                     {{form.controls.description.errors | json}}
                                 </div>
