@@ -13,7 +13,7 @@ export class ImageUploaderComponent implements OnInit {
 
   @Output() onUpload = new EventEmitter();
   @Input() name: string = '';
-  @Input() id: string = '';
+  @Input() id?: string = '';
   @ViewChild('myInput') fileInput?: ElementRef;
 
   constructor(

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-3 p-4" *ngFor="let note of notes">
             <div class="card">
-                <img class="img-fluid" src="https://localhost:5001/resources/images/noAvatar.jpg" alt="{{note.title}}">
+                <img class="img-fluid" src="https://localhost:5001/{{note.url}}" alt="{{note.title}}">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{note.title}}
@@ -27,5 +27,5 @@
             </div>
         </div>
     </div>
-    <app-details [note]="note"></app-details>
+    <app-details (onUpdate)="refresh()" [note]="note"></app-details>
 </div>

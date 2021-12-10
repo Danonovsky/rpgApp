@@ -8,7 +8,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-4">
+                        <img [src]="getUrl()" alt="" class="img-fluid">
+                        <app-image-uploader [name]="'note'" [id]="note?.id" (onUpload)="onUpload($event)"></app-image-uploader>
+                    </div>
+                    <div class="col-md-8">
                         <p class="text-muted mb-0"><small>Title</small></p>
                         <p>{{note?.title}}</p>
                         <p class="text-muted mb-0"><small>Description</small></p>
