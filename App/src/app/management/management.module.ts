@@ -8,10 +8,12 @@ import { NotesModule } from './notes/notes.module';
 import { HomeComponent } from './home/home.component';
 import { ManagementRoutingModule } from './management-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,

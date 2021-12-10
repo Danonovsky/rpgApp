@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" *ngIf="item">
         <div class="col-12 text-end">
-            <a class="btn btn-outline-success me-2" *ngIf="isOwner" routerLink="/management/{{item.id}}">Management</a>
+            <a class="btn btn-outline-success me-2" *ngIf="isOwner" routerLink="/management/{{item.id}}/home">Management</a>
             <a class="btn btn-outline-warning me-2" *ngIf="isOwner" routerLink="/campaign/edit/{{id}}">Edit</a>
             <button class="btn btn-outline-danger" *ngIf="isOwner">Delete</button>
             <button class="btn btn-outline-danger ms-4" *ngIf="joined">Leave</button>
