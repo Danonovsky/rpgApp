@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { SetImageUrlResponse } from 'src/app/campaign/campaign.models';
 import { environment } from 'src/environments/environment';
+import { SetUrlResponse } from '../models';
 
 @Component({
   selector: 'app-image-uploader',
@@ -31,7 +31,7 @@ export class ImageUploaderComponent implements OnInit {
       if(newFile) {
         var formData = new FormData();
         formData.append('file',newFile, newFile.name);
-        this.http.patch<SetImageUrlResponse>(`${environment.api}${this.name}/Img/${this.id}`, formData, { observe: 'response' }).subscribe(_ => {
+        this.http.patch<SetUrlResponse>(`${environment.api}${this.name}/Img/${this.id}`, formData, { observe: 'response' }).subscribe(_ => {
           this.fileInput!.nativeElement.value= '';
           if(_.body) {
             this.onUpload.emit(_.body.url);

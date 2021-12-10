@@ -13,15 +13,6 @@ export interface CampaignResponse {
     description: string,
     isPublic: boolean,
     system: string,
-    imageUrl: string,
+    url: string,
     user: PublicUserResponse
-}
-
-export interface SetImageUrlRequest {
-    campaignId: string,
-    file: File
-}
-
-export interface SetImageUrlResponse {
-    url: string
 }

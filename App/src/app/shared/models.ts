@@ -10,3 +10,7 @@ export interface RollResult {
     summary: number,
     summaryMultiplied: number
 }
+
+export interface SetUrlResponse {
+    url: string
+}

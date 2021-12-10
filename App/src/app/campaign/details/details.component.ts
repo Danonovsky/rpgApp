@@ -32,7 +32,7 @@ export class DetailsComponent implements OnInit {
     }
     this.campaignService.get(this.id!).subscribe(_ => {
       this.item = _.body!;
-      this.item.imageUrl = this.item.imageUrl;
+      this.item.url = this.item.url;
       this.isOwner = this.campaignService.isOwner(_.body!.user.id);
       this.checkIfJoined();
     }, _ => {
@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
   }
 
   getUrl() {
-    return environment.api+this.item!.imageUrl;
+    return environment.api+this.item!.url;
   }
   checkIfJoined() {
     this.campaignService.findGuest().subscribe(_ => {
@@ -63,6 +63,6 @@ export class DetailsComponent implements OnInit {
   }
 
   onUpload(event: string) {
-    this.item!.imageUrl = event;
+    this.item!.url = event;
   }
 }
