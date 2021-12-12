@@ -3,6 +3,31 @@
     <div class="row mt-4 text-center">
         <h2>Players</h2>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item p-3" *ngFor="let player of players">
+                    <div class="row">
+                        <div class="col-3">
+                            {{ player.user.name }}
+                        </div>
+                        <div class="col-6">
+                            <select #s (change)="assignCharacter(player.id, s.value)" name="character" id="character" class="form-control">
+                                <option value="">-</option>
+                                <option [value]="'00000000-0000-0000-0000-000000000000'" *ngIf="player.character">None</option>
+                                <option *ngFor="let item of availableCharacters" [value]="item.id">
+                                    {{item.firstName}} {{item.lastName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-3 text-end">
+                            <button class="btn btn-outline-danger">Remove</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     <!-- <div class="row">
         <div class="col-3 p-4" *ngFor="let note of notes">
             <div class="card">

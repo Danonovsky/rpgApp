@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CharacterResponse } from '../../characters/character.models';
 import { PlayerService } from '../player.service';
 import { CampaignPlayerResponse } from '../players.models';
 
@@ -11,6 +12,7 @@ import { CampaignPlayerResponse } from '../players.models';
 })
 export class ListComponent implements OnInit {
   players: CampaignPlayerResponse[] = [];
+  availableCharacters: CharacterResponse[] = [];
   campaignId: string = '';
 
   constructor(
@@ -27,18 +29,41 @@ export class ListComponent implements OnInit {
     }
   }
 
+  assignCharacter(playerId: string, characterId: string) {
+    if(characterId) {
+      if(characterId == '00000000-0000-0000-0000-000000000000') {
+        this.playerService.unassignCharacter({
+          campaignId: this.campaignId,
+          playerId: playerId
+        }).subscribe(_ => {
+          this.refresh();
+          this.toastr.info('Saved changes.');
+        }, _ => {
+          this.toastr.error('An error occured.');
+        });
+      } else {
+        this.playerService.assignCharacter({
+          characterId: characterId,
+          playerId: playerId
+        }).subscribe(_ => {
+          this.refresh();
+          this.toastr.info('Saved changes.');
+        }, _ => {
+          this.toastr.error('An error occured.');
+        });
+      }
+    }
+  }
+
   refresh() {
     this.playerService.getAll(this.campaignId).subscribe(_ => {
       this.players = _.body!;
       console.log(this.players);
     });
+    this.playerService.getAvailableCharacters(this.campaignId).subscribe(_ => {
+      this.availableCharacters = _.body!;
+    });
   }
-
-  // loadDetails(id: string) {
-  //   this.noteService.get(id).subscribe(_ => {
-  //     this.note = _.body!;
-  //   });
-  // }
 
   delete(id: string) {
     this.playerService.delete(id).subscribe(_ => {

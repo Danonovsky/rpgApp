@@ -7,3 +7,13 @@ export interface CampaignPlayerResponse {
     character: CharacterSimpleResponse,
     user: PublicUserResponse
 }
+
+export interface AssignCharacterRequest {
+    playerId: string,
+    characterId?: string
+}
+
+export interface UnassignCharacterRequest {
+    playerId: string,
+    campaignId: string
+}
