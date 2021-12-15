@@ -1,6 +1,6 @@
 <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="note">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailsModalLabel">Note Details</h5>
                 <button type="button" id="detailsClose" class="btn-close" data-bs-dismiss="modal"
@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img [src]="getUrl()" alt="" class="img-fluid">
+                        <img [src]="note.url | urlPipe" alt="" class="img-fluid">
                         <app-image-uploader [name]="'note'" [id]="note?.id" (onUpload)="onUpload($event)"></app-image-uploader>
                     </div>
                     <div class="col-md-8">

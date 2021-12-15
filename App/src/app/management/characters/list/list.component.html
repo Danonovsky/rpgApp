@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-3 p-4" *ngFor="let char of characters">
             <div class="card">
-                <img class="img-fluid" src="https://localhost:5001/{{char.url}}" alt="{{char.firstName}} {{char.lastName}}">
+                <img class="img-fluid" [src]="char.url | urlPipe" alt="{{char.firstName}} {{char.lastName}}">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{char.firstName}} {{char.lastName}}

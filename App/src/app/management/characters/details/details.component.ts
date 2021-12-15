@@ -20,8 +20,4 @@ export class DetailsComponent implements OnInit {
     this.character!.url = event;
     this.onUpdate.emit();
   }
-
-  getUrl() {
-    return environment.api+this.character?.url;
-  }
 }

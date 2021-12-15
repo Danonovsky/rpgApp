@@ -15,8 +15,7 @@ export class CharactersService {
     return `${environment.api}character/`;
   }
   constructor(
-    private http: HttpClient,
-    private campaignService: CampaignService
+    private http: HttpClient
   ) { }
 
   rollCharacter(request: CharacterRollRequest): Observable<HttpResponse<Character>> {
