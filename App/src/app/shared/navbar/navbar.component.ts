@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   userName: string = '';
+  userId: string = '';
   token: string = '';
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
     if(t) {
       this.token = t;
       this.userName = this.jwtHelper.decodeToken(this.token)["name"];
+      this.userId = this.jwtHelper.decodeToken(this.token)["id"];
     }
   }
 

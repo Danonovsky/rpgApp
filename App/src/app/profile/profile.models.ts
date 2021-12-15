@@ -16,5 +16,6 @@ export interface LoginResponse {
 
 export interface PublicUserResponse {
     id: string,
-    name: string
+    name: string,
+    url: string
 }

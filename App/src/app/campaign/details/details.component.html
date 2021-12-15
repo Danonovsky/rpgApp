@@ -9,7 +9,7 @@
         <h2>Campaign Details</h2>
         <div class="row">
             <div class="col-md-4">
-                <img [src]="getUrl()" alt="" class="img-fluid">
+                <img [src]="item.url | urlPipe" alt="" class="img-fluid">
                 <app-image-uploader *ngIf="isOwner" [name]="'campaign'" [id]="item.id" (onUpload)="onUpload($event)"></app-image-uploader>
             </div>
             <div class="col-md-8">
