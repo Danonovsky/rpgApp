@@ -30,6 +30,8 @@ export class NavbarComponent implements OnInit {
   isLoggedIn() {
     var token = localStorage.getItem("jwt");
     if(token && !this.jwtHelper.isTokenExpired(token)) {
+      this.userName = this.jwtHelper.decodeToken(token)["name"];
+      this.userId = this.jwtHelper.decodeToken(token)["id"];
       return true;
     }
     this.profile.logOut();
