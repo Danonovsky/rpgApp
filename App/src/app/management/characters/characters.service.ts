@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CampaignService } from 'src/app/campaign/campaign.service';
+import { SetUrlResponse } from 'src/app/shared/models';
 import { environment } from 'src/environments/environment';
 import { AddCharacterRequest, Character, CharacterResponse, CharacterRollRequest, CharacterSimpleResponse } from './character.models';
 
@@ -40,5 +41,9 @@ export class CharactersService {
 
   delete(characterId: string): Observable<HttpResponse<boolean>> {
     return this.http.delete<boolean>(`${this.url}${characterId}`, { observe: 'response' });
+  }
+
+  setUrl(id: string, request: FormData) {
+    return this.http.patch<SetUrlResponse>(this.url+id, request, { observe: 'response'});
   }
 }

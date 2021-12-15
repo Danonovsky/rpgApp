@@ -46,7 +46,8 @@ export interface AddCharacterRequest {
 export interface CharacterSimpleResponse {
     id: string,
     firstName: string,
-    lastName: string
+    lastName: string,
+    url: string
 }
 
 export interface CharacterResponse extends CharacterSimpleResponse {
