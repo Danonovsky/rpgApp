@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MNavbarComponent } from './m-navbar/m-navbar.component';
 import { SystemPickerComponent } from './system-picker/system-picker.component';
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
+import { UrlPipe } from './pipes/url.pipe';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
     NavbarComponent,
     MNavbarComponent,
     SystemPickerComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    UrlPipe
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
   exports: [
     NavbarComponent,
     MNavbarComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    UrlPipe
   ]
 })
 export class SharedModule { }

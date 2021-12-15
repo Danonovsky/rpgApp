@@ -27,11 +27,11 @@ export class AddComponent implements OnInit {
   }
 
   reset() {
-    this.form.setValue({'name':''});
+    this.form.reset();
   }
 
   onSubmit() {
-    if (!this.form.valid) {
+    if (!this.form?.valid) {
       this.toastr.error('Invalid input', 'Error');
     } else {
       this.noteService.add({

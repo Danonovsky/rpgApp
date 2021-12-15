@@ -14,3 +14,7 @@ export interface RollResult {
 export interface SetUrlResponse {
     url: string
 }
+
+export function getUrl(url: string) {
+    return url ? `https://localhost:5001/${url}` : `https://localhost:5001/resources/images/noAvatar.jpg`;
+}

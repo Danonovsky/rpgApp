@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-3 p-4" *ngFor="let note of notes">
             <div class="card">
-                <img class="img-fluid" src="https://localhost:5001/{{note.url}}" alt="{{note.title}}">
+                <img class="img-fluid" [src]="note.url | urlPipe" alt="{{note.title}}">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{note.title}}
