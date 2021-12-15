@@ -22,11 +22,14 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get("id")!;
-    if(!this.id) {
-      this.router.navigate(["/"]);
-    }
-    this.refresh();
+    this.route.params.subscribe(_ => {
+      this.id = _.id;
+      if(!this.id) {
+        this.router.navigate(["/"]);
+      }
+      this.refresh();
+    });
+    
   }
 
   refresh() {
