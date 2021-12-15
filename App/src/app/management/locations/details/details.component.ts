@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LocationResponse } from '../locations.models';
 
 @Component({
@@ -8,9 +8,15 @@ import { LocationResponse } from '../locations.models';
 })
 export class DetailsComponent implements OnInit {
   @Input() location?: LocationResponse;
+  @Output() onUpdate = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onUpload(event: string) {
+    this.location!.url = event;
+    this.onUpdate.emit();
   }
 
 }

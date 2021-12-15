@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SetUrlResponse } from 'src/app/shared/models';
 import { environment } from 'src/environments/environment';
 import { AddLocationRequest, EditLocationRequest, LocationResponse } from './locations.models';
 

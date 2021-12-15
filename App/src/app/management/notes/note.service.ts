@@ -32,8 +32,4 @@ export class NoteService {
   delete(id: string) {
     return this.http.delete<boolean>(this.url+id, { observe: 'response' });
   }
-
-  setUrl(id: string, request: FormData) {
-    return this.http.patch<SetUrlResponse>(this.url+id, request, { observe: 'response'});
-  }
 }

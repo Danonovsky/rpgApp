@@ -19,9 +19,4 @@ export class DetailsComponent implements OnInit {
     this.note!.url = event;
     this.onUpdate.emit();
   }
-
-  getUrl() {
-    return environment.api+this.note?.url;
-  }
-
 }

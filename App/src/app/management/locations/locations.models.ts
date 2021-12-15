@@ -10,5 +10,6 @@ export interface EditLocationRequest extends AddLocationRequest {
 export interface LocationResponse {
     id: string,
     name: string,
-    campaignId: string
+    campaignId: string,
+    url: string
 }

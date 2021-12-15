@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-3 p-4" *ngFor="let location of locations">
             <div class="card">
-                <img class="img-fluid" src="https://localhost:5001/resources/images/noAvatar.jpg" alt="{{location.name}}">
+                <img class="img-fluid" [src]="location.url | urlPipe" alt="{{location.name}}">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{location.name}}
@@ -27,5 +27,5 @@
             </div>
         </div>
     </div>
-    <app-details [location]="location"></app-details>
+    <app-details [location]="location" (onUpdate)="refresh()"></app-details>
 </div>
