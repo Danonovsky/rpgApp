@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id")!;
     if(!this.id) {
-      this.router.navigate(["/campaigns"]);
+      this.router.navigate(["/campaign"]);
     }
     this.campaignService.get(this.id!).subscribe(_ => {
       this.item = _.body!;
@@ -64,5 +64,14 @@ export class DetailsComponent implements OnInit {
 
   onUpload(event: string) {
     this.item!.url = event;
+  }
+
+  delete(id: string) {
+    this.campaignService.delete(id).subscribe(_ => {
+      this.toastr.success('Campaign deleted!');
+      this.router.navigate(["/campaign"]);
+    }, _ => {
+      this.toastr.error('An error occured. Try again.');
+    });
   }
 }
