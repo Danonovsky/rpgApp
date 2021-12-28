@@ -22,15 +22,33 @@
             </div>
             
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-4 text-center">
-                Players: 0
+                <circle-progress
+                [percent]="100"
+                [outerStrokeColor]="'#78C000'"
+                [innerStrokeColor]="'#C7E596'"
+                [title]="item.playerCount.toString()"
+                [subtitle]="'Players'"
+                ></circle-progress>
             </div>
             <div class="col-4 text-center">
-                Locations: 0
+                <circle-progress
+                [percent]="100"
+                [outerStrokeColor]="'#78C000'"
+                [innerStrokeColor]="'#C7E596'"
+                [title]="item.locationCount.toString()"
+                [subtitle]="'Locations'"
+                ></circle-progress>
             </div>
             <div class="col-4 text-center">
-                Items: 0
+                <circle-progress
+                [percent]="100"
+                [outerStrokeColor]="'#78C000'"
+                [innerStrokeColor]="'#C7E596'"
+                [title]="item.itemCount.toString()"
+                [subtitle]="'Items'"
+                ></circle-progress>
             </div>
         </div>
         <div class="row mt-3" *ngIf="!isOwner">

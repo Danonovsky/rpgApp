@@ -14,5 +14,8 @@ export interface CampaignResponse {
     isPublic: boolean,
     system: string,
     url: string,
-    user: PublicUserResponse
+    user: PublicUserResponse,
+    playerCount: number,
+    locationCount: number,
+    itemCount: number
 }

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,19 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    SharedModule
+    SharedModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 8,
+      innerStrokeWidth: 2,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+      units: '',
+      titleFontSize: '20',
+      titleColor: '#fff',
+      subtitleFontSize: '24'
+    })
   ]
 })
 export class CampaignModule { }
