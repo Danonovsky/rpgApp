@@ -1,0 +1,28 @@
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" *ngIf="item">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Item Details</h5>
+                <button type="button" id="detailsClose" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img [src]="item.url | urlPipe" alt="" class="img-fluid">
+                        <app-image-uploader [name]="'item'" [id]="item?.id" (onUpload)="onUpload($event)"></app-image-uploader>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="text-muted mb-0"><small>Title</small></p>
+                        <p>{{item?.name}}</p>
+                        <p class="text-muted mb-0"><small>Content</small></p>
+                        <p>{{item?.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<app-m-navbar [campaignId]="campaignId" [page]="'items'"></app-m-navbar>
+<div class="container mt-4">
+    <app-add [campaignId]="campaignId" (onAdd)="refresh()"></app-add>
+    <div class="row mt-4 text-center">
+        <h2>Items</h2>
+    </div>
+    <div class="row">
+        <div class="col-3 p-4" *ngFor="let item of items">
+            <div class="card">
+                <img class="img-fluid" [src]="item.url | urlPipe" alt="{{item.name}}">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{item.name}}
+                    </h5>
+                    <div class="row mt-4">
+                        <p class="col-6 mb-0">
+                            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailsModal"
+                                (click)="loadDetails(item.id)">
+                                Details
+                            </button>
+                        </p>
+                        <p class="col-6 mb-0 text-end">
+                            <button class="btn btn-outline-danger" (click)="delete(item.id)">Delete</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-details (onUpdate)="refresh()" [item]="item"></app-details>
+</div>

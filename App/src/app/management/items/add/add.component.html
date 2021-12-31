@@ -1,0 +1,54 @@
+<!-- Button trigger modal -->
+<div class="row">
+    <div class="col-12 text-center">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal"
+            (click)="reset()">
+            Add Item
+        </button>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Add Item</h5>
+                    <button type="button" id="addClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-floating mb-4">
+                                <input formControlName="name" type="text" class="form-control" id="name"
+                                    placeholder="Name" [ngClass]="form.controls.name.errors?'is-invalid':''">
+                                <label for="name">Name</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.name.errors | json}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-floating mb-4">
+                                <textarea formControlName="description" type="text" class="form-control" id="content"
+                                    placeholder="Content" [ngClass]="form.controls.description.errors?'is-invalid':''"></textarea>
+                                <label for="content">Content</label>
+                                <div class="invalid-feedback">
+                                    {{form.controls.description.errors | json}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-success">Add</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

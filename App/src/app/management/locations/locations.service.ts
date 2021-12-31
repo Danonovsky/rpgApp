@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SetUrlResponse } from 'src/app/shared/models';
 import { environment } from 'src/environments/environment';
 import { AddLocationRequest, EditLocationRequest, LocationResponse } from './locations.models';
@@ -24,7 +25,7 @@ export class LocationService {
     return this.http.get<LocationResponse[]>(`${this.url}List/${campaignId}`, { observe: 'response' });
   }
 
-  add(request: AddLocationRequest) {
+  add(request: AddLocationRequest) : Observable<HttpResponse<LocationResponse>> {
     return this.http.post<LocationResponse>(`${this.url}`, request, { observe: 'response' });
   }
 
