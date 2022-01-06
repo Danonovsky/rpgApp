@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CampaignService } from 'src/app/campaign/campaign.service';
 import { SetUrlResponse } from 'src/app/shared/models';
 import { environment } from 'src/environments/environment';
+import { ItemResponse } from '../items/items.models';
 import { AddCharacterRequest, Character, CharacterResponse, CharacterRollRequest, CharacterSimpleResponse } from './character.models';
 
 @Injectable({
@@ -44,5 +45,9 @@ export class CharactersService {
 
   setUrl(id: string, request: FormData) {
     return this.http.patch<SetUrlResponse>(this.url+id, request, { observe: 'response'});
+  }
+
+  getAllItems(id: string) {
+    return this.http.get<ItemResponse[]>(this.url + "AllItems/"+id, { observe: 'response' });
   }
 }

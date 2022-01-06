@@ -11,3 +11,8 @@ export interface ItemResponse {
     url: string,
     campaignId: string
 }
+
+export interface AssignItemToCharacterRequest {
+    itemId: string,
+    characterId: string
+}

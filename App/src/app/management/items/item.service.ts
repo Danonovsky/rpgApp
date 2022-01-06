@@ -1,9 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { SetUrlResponse } from 'src/app/shared/models';
 import { environment } from 'src/environments/environment';
-import { AddItemRequest, ItemResponse } from './items.models';
+import { AddItemRequest, AssignItemToCharacterRequest, ItemResponse } from './items.models';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +29,17 @@ export class ItemService {
 
   delete(id: string) {
     return this.http.delete<boolean>(this.url+id, { observe: 'response' });
+  }
+
+  getAvailable(campaignId: string) {
+    return this.http.get<ItemResponse[]>(this.url+"Available/"+campaignId, { observe: 'response' });
+  }
+
+  remove(id: string) {
+    return this.http.delete<boolean>(this.url+"Remove/"+id, { observe: 'response' });
+  }
+
+  assignToCharacter(request: AssignItemToCharacterRequest) {
+    return this.http.post<boolean>(this.url+"AssignToCharacter", request, { observe: 'response' });
   }
 }
