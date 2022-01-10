@@ -6,6 +6,7 @@ export interface Roll {
 }
 
 export interface RollResult {
+    roll: string,
     dices: number[],
     summary: number,
     summaryMultiplied: number

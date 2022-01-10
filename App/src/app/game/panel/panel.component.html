@@ -1,57 +1,94 @@
 <div class="container-fluid">
-    <div class="row vh-90">
+    <div class="row vh-90 p-2">
         <div class="col-3">
             Left section
         </div>
         <div class="col-6">
-            Middle section
-            <div class="row h-25">
+            <div class="row h-25 p-2">
                 <div class="col-12">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="form-floating mb-4">
-                                <input class="form-control" [(ngModel)]="amount" type="number" id="amount" placeholder="Amount" min="1"> 
-                                <label for="amount">Amount</label>
+                    <div class="card text-white bg-dark h-100">
+                        <div class="card-header">Roll a Dice</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" [(ngModel)]="amount" type="number" id="amount" placeholder="Amount" min="1"> 
+                                        <label for="amount">Amount</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" [(ngModel)]="dice" type="number" id="dice" placeholder="dice" min="1"> 
+                                        <label for="dice">Dice</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" [(ngModel)]="static" type="number" id="static" placeholder="static"> 
+                                        <label for="static">Static</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" [(ngModel)]="multiplier" type="number" id="multiplier" placeholder="multiplier"> 
+                                        <label for="multiplier">Multiplier</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-outline-light" (click)="roll()">Roll</button>
+                                    <button class="btn btn-outline-light ms-2" (click)="roll()">Roll to MG</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="form-floating mb-4">
-                                <input class="form-control" [(ngModel)]="dice" type="number" id="dice" placeholder="dice" min="1"> 
-                                <label for="dice">Dice</label>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-floating mb-4">
-                                <input class="form-control" [(ngModel)]="static" type="number" id="static" placeholder="static"> 
-                                <label for="static">Static</label>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-floating mb-4">
-                                <input class="form-control" [(ngModel)]="multiplier" type="number" id="multiplier" placeholder="multiplier"> 
-                                <label for="multiplier">Multiplier</label>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <div class="row">
-                        <div class="offset-3 col-6 text-center">
-                            <button class="btn btn-outline-primary" (click)="roll()">Roll</button>
+                    
+                </div>
+            </div>
+            <div class="row h-50 p-2">
+                <div class="col-12">
+                    <div class="card text-white bg-dark h-100">
+                        <div class="card-header">Game</div>
+                        <div class="card-body">
+                            ...
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row h-50">
+            <div class="row h-25 p-2">
                 <div class="col-12">
-                    Middle section
-                </div>
-            </div>
-            <div class="row h-25">
-                <div class="col-12 overflow-auto">
-                    Bottom section
+                    <div class="card text-white bg-dark h-100">
+                        <div class="card-header">Chat</div>
+                        <div class="card-body pt-1">
+                            <div class="row h-75 overflow-auto">
+                                <div class="list-group list-group-flush">
+                                    <p class="list-group-item pt-0 pb-0 m-0" *ngFor="let message of messages">{{message}}</p>
+                                  </div>
+                            </div>
+                            <div class="row h-25">
+                                <div class="col-3">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>All</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="text" placeholder="Message">
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn btn-outline-primary">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-3 p-2">
             Right section
         </div>
     </div>

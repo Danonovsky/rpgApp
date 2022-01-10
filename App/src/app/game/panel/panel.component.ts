@@ -12,6 +12,8 @@ export class PanelComponent implements OnInit {
   multiplier: number = 1;
   static: number = 0;
 
+  messages: string[] = [];
+
   constructor(
     private gameService: GameService
   ) { }
@@ -19,7 +21,7 @@ export class PanelComponent implements OnInit {
   ngOnInit(): void {
     this.gameService.listenSingleRoll();
     this.gameService.rollResult.subscribe(_ => {
-      console.log(_);//display on chat later
+      this.messages.push(`Admin: Rolled ${_.summaryMultiplied} [${_.dices.toString()}] from ${_.roll}`);
     })
   }
 
